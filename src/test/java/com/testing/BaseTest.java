@@ -30,13 +30,24 @@ public class BaseTest {
     @BeforeClass
     protected void setUp(@Optional("chrome") String browser) throws MalformedURLException {
         this.browser = browser;
+
+        // run with local Selenium WebDrivers
         if(browser.toLowerCase().equals("firefox")) {
-            capabilities = new DesiredCapabilities(new FirefoxOptions());
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+            webDriver = new FirefoxDriver();
         } else {
-            capabilities = new DesiredCapabilities(new ChromeOptions());
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+            webDriver = new FirefoxDriver();
         }
 
-        webDriver = new RemoteWebDriver(new URL("http://172.0.0.2:4444/wd/hub"), capabilities);
+//        // run with remote Selenium WebDriver
+//        if(browser.toLowerCase().equals("firefox")) {
+//            capabilities = new DesiredCapabilities(new FirefoxOptions());
+//        } else {
+//            capabilities = new DesiredCapabilities(new ChromeOptions());
+//        }
+//
+//        webDriver = new RemoteWebDriver(new URL("http://172.0.0.2:4444/wd/hub"), capabilities);
 
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
