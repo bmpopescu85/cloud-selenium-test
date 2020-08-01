@@ -36,8 +36,9 @@ public class BingPage extends PageFactory {
         searchBox.submit();
     }
 
-    public boolean isSearchOutputLinkPresent() {
+    public boolean isSearchOutputLinkPresent() throws InterruptedException {
         logger.info("Checking if search output link is present");
+        Thread.sleep(1000);
         return searchOutputLink.size() > 0 && searchOutputLink.get(0).isDisplayed();
     }
 
