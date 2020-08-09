@@ -17,7 +17,7 @@ RUN apt-get update && \
 #=============================================================
 # Clone code
 #=============================================================
-RUN git clone https://github.com/sorin86-dan/cloud-selenium-test.git
+RUN git clone https://github.com/bmpopescu85/cloud-selenium-test.git
 
 #=============================================================
 # Build code
