@@ -30,6 +30,8 @@ public class BaseTest {
     @BeforeClass
     protected void setUp(@Optional("chrome") String browser) throws MalformedURLException {
         this.browser = browser;
+
+        // run with Selenium Grid on localhost
         if(browser.toLowerCase().equals("firefox")) {
             capabilities = new DesiredCapabilities(new FirefoxOptions());
         } else {
